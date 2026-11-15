@@ -1,0 +1,8 @@
+{
+  "transport": "wifi",
+  "port": 8765,
+  "bt_channel": 4,
+  "firebase_db_url": "https://YOUR-PROJECT-default-rtdb.firebaseio.com",
+  "pair_id": "my-laptop-1",
+  "windows_user": ""
+}
