@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PC Unlock: unlock Windows with your phone’s fingerprint</title>
+<meta name="description" content="Open-source project that turns your Android phone into a fingerprint reader for Windows PCs without one.">
+<style>
+:root{--bg:#f6f7fb;--card:#ffffff;--text:#16181d;--muted:#5b6270;--line:#e1e4ec;--accent:#2563eb;--accent-text:#ffffff;--ok:#15803d;--warn:#b45309;--code:#eef1f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1218;--card:#171b24;--text:#eceff5;--muted:#9aa3b5;--line:#272d3a;--accent:#60a5fa;--accent-text:#0b1220;--ok:#4ade80;--warn:#fbbf24;--code:#0f131b}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.brand{font-weight:700;font-size:18px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--accent)}
+.hero{padding:56px 0 40px}
+.tag{display:inline-block;font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--card)}
+h1{font-size:clamp(28px,6vw,44px);line-height:1.15;margin:16px 0 12px}
+.lead{font-size:18px;color:var(--muted);max-width:640px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:600;text-decoration:none;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-text)}
+.btn.ghost{color:var(--accent);background:transparent}
+section{padding:36px 0;border-top:1px solid var(--line)}
+h2{font-size:26px;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0 0 10px;color:var(--muted);font-size:15px}
+.stages{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.stages li{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.stages .dot{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700}
+ol.steps{padding-left:0;list-style:none;counter-reset:s;display:grid;gap:12px}
+ol.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 56px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-text);display:grid;place-items:center;font-weight:700}
+code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:.92em;word-break:break-word}
+.note{border-left:4px solid var(--warn);background:var(--card);padding:12px 16px;border-radius:8px;margin:16px 0;font-size:15px}
+.note.ok{border-color:var(--ok)}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--code)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">PC Unlock</span>
+    <nav>
+      <a href="#download">Download</a>
+      <a href="#setup">Setup guide</a>
+      <a href="#security">Your password</a>
+      <a href="#help">Help</a>
+      <a href="https://github.com/Shaikadnan5884/pc-phone-unlock">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<div class="hero">
+  <span class="tag">Open source · Computer Networking project</span>
+  <h1>Unlock your Windows PC with your phone’s fingerprint</h1>
+  <p class="lead">No fingerprint sensor on your laptop? When the sign-in screen appears, your phone gets a request. Touch its sensor and Windows signs in. You never type the password.</p>
+  <div class="btns">
+    <a class="btn primary" href="#download">Download</a>
+    <a class="btn ghost" href="https://github.com/Shaikadnan5884/pc-phone-unlock">View source on GitHub</a>
+  </div>
+</div>
+
+<section id="how">
+  <h2>How it works</h2>
+  <p class="sub">Every step is checked for real, and the phone shows it live.</p>
+  <ul class="stages">
+    <li><span class="dot">1</span> Connected to PC</li>
+    <li><span class="dot">2</span> Unlock signal received</li>
+    <li><span class="dot">3</span> Fingerprint authenticated</li>
+    <li><span class="dot">4</span> Response sent to PC</li>
+    <li><span class="dot">5</span> PC verified the signature</li>
+    <li><span class="dot">6</span> Unlock released, Windows signs in</li>
+  </ul>
+  <div class="grid" style="margin-top:16px">
+    <div class="card"><h3>Pluggable connection</h3><p>Wi-Fi, phone hotspot, Firebase cloud or Bluetooth. Pair once with a QR code.</p></div>
+    <div class="card"><h3>Safe by design</h3><p>The phone signs a one-time challenge. Its key needs your fingerprint and never leaves the phone.</p></div>
+    <div class="card"><h3>Always a way back</h3><p>Your normal password and PIN sign-in stay available.</p></div>
+  </div>
+</section>
+
+<section id="download">
+  <h2>Download</h2>
+  <p class="sub">Free and open source (MIT licence). Version 1.0.0.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Windows app</h3>
+      <p>Installer for Windows 10 and 11 (64-bit). No Python needed.</p>
+      <a class="btn primary" href="https://github.com/Shaikadnan5884/pc-phone-unlock/releases/latest/download/PCUnlock-Setup.exe">Download PCUnlock-Setup.exe</a>
+    </div>
+    <div class="card">
+      <h3>Android app</h3>
+      <p>For Android 8.0 or newer with a fingerprint enrolled.</p>
+      <a class="btn primary" href="https://github.com/Shaikadnan5884/pc-phone-unlock/releases/latest/download/app-release.apk">Download app-release.apk</a>
+    </div>
+    <div class="card">
+      <h3>Source code</h3>
+      <p>Read it, build it, improve it.</p>
+      <a class="btn ghost" href="https://github.com/Shaikadnan5884/pc-phone-unlock">Open the repository</a>
+    </div>
+  </div>
+  <div class="note">Windows may warn about an “unknown publisher”, because the installer is not code-signed yet. Choose <b>More info</b>, then <b>Run anyway</b>. To check your download, compare its SHA-256 with the value on the <a href="https://github.com/Shaikadnan5884/pc-phone-unlock/releases">release page</a>: run <code>certutil -hashfile PCUnlock-Setup.exe SHA256</code>.</div>
+</section>
+
+<section id="setup">
+  <h2>Setup guide</h2>
+  <p class="sub">About 10 minutes. Early-stage software, so please try it on a spare PC first.</p>
+
+  <h3>Before you start</h3>
+  <ol class="steps">
+    <li>Create a Windows <b>restore point</b> and a second <b>local administrator account</b> that you have tested.</li>
+    <li>Your Windows account needs a <b>password</b>. A PIN alone does not work. With a Microsoft account, use the Microsoft account password, not the PIN.</li>
+    <li>Put the phone and PC on the same Wi-Fi or hotspot, and keep both clocks on automatic time.</li>
+  </ol>
+
+  <h3 style="margin-top:28px">Install on Windows</h3>
+  <ol class="steps">
+    <li>Download and run <code>PCUnlock-Setup.exe</code>, then accept the administrator prompt.</li>
+    <li>Tick the option to allow password sign-in, if asked. Windows blocks password sign-in when “only allow Windows Hello” is on.</li>
+    <li>Click <b>Install</b>, keep the setup box ticked and click <b>Finish</b>.</li>
+    <li>Enter your Windows account password. A wrong password is rejected.</li>
+    <li>In the pairing window choose <b>Wi-Fi</b>, <b>Hotspot</b>, <b>Firebase</b> or <b>Bluetooth</b> and click <b>Generate QR</b>.</li>
+  </ol>
+
+  <h3 style="margin-top:28px">Install on Android</h3>
+  <ol class="steps">
+    <li>Download <code>app-release.apk</code> on the phone and open it. Allow installs from your browser if asked.</li>
+    <li>Open <b>PC Unlock</b> and allow notifications and the camera.</li>
+    <li>Tap <b>Scan QR from PC</b> and scan the QR code. The first stage turns green.</li>
+  </ol>
+
+  <h3 style="margin-top:28px">Use it</h3>
+  <ol class="steps">
+    <li>Lock the PC (Start, your user icon, Lock), or restart and wait at the sign-in screen.</li>
+    <li>The phone shows <b>Unlock your PC?</b> Tap it.</li>
+    <li>Touch the fingerprint sensor. All six stages turn green and Windows signs in.</li>
+  </ol>
+
+  <div class="note ok"><b>Good to know.</b> If you change your Windows password, run <code>C:\pcunlock\setup_tool.exe</code> as administrator again. If the PC’s network address changes, run <code>C:\pcunlock\pair_qr.exe</code> and pair again.</div>
+</section>
+
+<section id="security">
+  <h2>Where your password goes</h2>
+  <p class="sub">This is a project that handles a Windows password, so here is what happens to it. The source is public, so you can check each line.</p>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Step</th><th>What happens</th><th>Code</th></tr>
+    <tr><td>Setup</td><td>The password is checked with Windows on your own PC and stored encrypted (Windows DPAPI, machine scope) in <code>C:\pcunlock\cred.bin</code>. Only SYSTEM and Administrators can open the file.</td><td><code>pc/setup_tool.py</code></td></tr>
+    <tr><td>Unlock</td><td>After a verified fingerprint the service reads the file and passes it through a local named pipe to the sign-in screen.</td><td><code>pc/service.py</code>, <code>pc/pipe_server.py</code></td></tr>
+    <tr><td>Windows sign-in</td><td>The provider gives the credentials to Windows.</td><td><code>provider/PCUnlockProvider/dllmain.cpp</code></td></tr>
+    <tr><td>Network</td><td>Only signed challenges and results travel between phone and PC. The password is never sent to the phone, a website, GitHub or the author.</td><td><code>pc/transports.py</code></td></tr>
+  </table>
+  </div>
+  <p>Do not just take our word for it: run Wireshark or Process Monitor during setup and unlock and look for outside connections.</p>
+  <div class="note"><b>Honest limits.</b> Anyone with administrator rights on the same PC can decrypt <code>cred.bin</code>. Wi-Fi traffic uses <code>ws://</code> (not encrypted) on your local network, and the PC does not yet prove its identity to the phone. Do not use this on shared or high-security machines.</div>
+</section>
+
+<section id="help">
+  <h2>Help and removal</h2>
+  <details><summary>Phone says “Disconnected”</summary>
+    <p>Check that both devices are on the same network, that the firewall rule <code>PCUnlock 8765</code> exists, and that the service is running (<code>schtasks /Run /TN PCUnlock</code>). If the PC’s address changed, pair again.</p></details>
+  <details><summary>The “Unlock with phone” tile does not appear</summary>
+    <p>Check that <code>PCUnlockProvider.dll</code> is in <code>C:\Windows\System32</code>, then restart the PC.</p></details>
+  <details><summary>Phone says unlocked but Windows does not sign in</summary>
+    <p>Run <code>setup_tool.exe</code> as administrator with the correct account password (not the PIN), and make sure “only allow Windows Hello sign-in” is off in Settings, Accounts, Sign-in options.</p></details>
+  <details><summary>“Request expired” on the phone</summary>
+    <p>The clocks differ. Turn on automatic date and time on both devices.</p></details>
+  <details><summary>Uninstall</summary>
+    <p>Settings, Apps, Installed apps, PC Unlock, Uninstall. This removes the sign-in tile, the background task, the firewall rule and the saved password.</p></details>
+  <details><summary>Emergency: I cannot sign in</summary>
+    <p>Use the normal password or PIN tile, it is always there. If that fails, hold <b>Shift</b> while clicking <b>Restart</b>, choose Troubleshoot, Startup Settings, Restart, and press <b>4</b> for Safe Mode. Then delete <code>C:\Windows\System32\PCUnlockProvider.dll</code> and run <code>unregister.reg</code> from the repository’s <code>pc/tools</code> folder.</p></details>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Built by Shaik Adnan as a Computer Networking project · MIT licence ·
+    <a href="https://github.com/Shaikadnan5884/pc-phone-unlock">GitHub</a> ·
+    <a href="https://github.com/Shaikadnan5884/pc-phone-unlock/issues">Report a problem</a>
+  </div>
+</footer>
+
+</body>
+</html>
